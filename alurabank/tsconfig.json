@@ -4,7 +4,7 @@
         "module": "es2015",
         "outDir": "app/js",
         "noEmitOnError": true,
-        "noImplicitAny": true,
+        "strict": true,
         "removeComments": true
     },
     "include": [
