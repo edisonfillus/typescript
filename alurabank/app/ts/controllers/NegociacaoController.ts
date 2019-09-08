@@ -2,7 +2,7 @@ import { NegociacoesView } from '../views/NegociacoesView.js';
 import { MensagemView } from '../views/MensagemView.js';
 import { Negociacoes } from '../models/Negociacoes.js';
 import { Negociacao } from '../models/Negociacao.js';
-import { domInject } from '../helpers/decorators/index.js'
+import { domInject, throttle } from '../helpers/decorators/index.js'
 import { NegociacaoParcial } from '../models/NegociacaoParcial.js';
 
 export class NegociacaoController {
@@ -23,6 +23,7 @@ export class NegociacaoController {
         this._negociacoesView.update(this._negociacoes);
     }
 
+    @throttle(500)
     importarDados() {
 
         function isOK(res: Response) {
@@ -46,6 +47,7 @@ export class NegociacaoController {
             .catch(err => console.log(err.message));       
     }
 
+    @throttle(500)
     adiciona(event: JQuery.Event) {
 
         event.preventDefault();
